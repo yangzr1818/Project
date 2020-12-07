@@ -3,6 +3,10 @@ $wrapper_color: white;
 $primary_color: rgb(87, 87, 87);
 $secondary_color: rgb(151, 6, 6);
 
+* {
+   
+    font-family: Verdana ;
+   }
 
 
 @mixin rounded-shaded-box($xoffset, $yoffset, $rounded-corners, $border-color){
@@ -27,6 +31,7 @@ header{
     margin-left: auto;
     margin-right: auto;
     background-color: $wrapper_color;
+    height:auto;
     
 }
 
@@ -96,12 +101,11 @@ table, th, td{
     color:black;
     border:solid 1px black;
     cursor:pointer;
-    /* ensure pointer events will apply to the button */
     pointer-events: all;
 }
 
 #buttons-container{
-    max-width: 300px;
+    max-width: 250px;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: auto;
@@ -111,6 +115,64 @@ table, th, td{
 }
 
 #buttons-container button{
+    font-size: large;
+    color: $secondary_color;
+    font-weight: bold;
+    border: 3px solid $primary_color;
+    border-radius: 3px;
+    
+}
+
+#scoreboard-container{
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#scoreboard-container p{
+    font-weight: bold;
+}
+
+#instructions-container{
+    font-weight: bold;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgb(131, 126, 126);
+   
+}
+
+#instructions-container h2{
+   
+    color: black;
+    padding-left: 10px;
+   
+    display: inline;
+   
+}
+
+#instructions-container h3{
+   
+    color: black;
+    padding-left: 10px;
   
+   
+}
+
+#instructions li{
     color: $secondary_color;
 }
+
+#instructions-container button{
+   
+    float: right;
+    font-size: small;
+    background:none;
+    border:none;
+    margin: 0;
+    padding-top:5px;
+    cursor: pointer;
+    color: rgb(180, 5, 5);
+    text-decoration: underline;
+    font-weight: bold;
+    
+}
+

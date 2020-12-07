@@ -9,6 +9,9 @@ const opponentDice2 = document.getElementById("dice-opponent-2");
 const roll = document.getElementById("rolldice");
 const newGameButton = document.getElementById("newgame");
 
+const $btnShow = $('#btn-show-instructions');
+const $btnHide = $('#btn-hide-instructions');
+
 //score fields
 const youScoreField = document.getElementById("youscore");
 const opponentScoreField = document.getElementById("opponentscore");
@@ -29,13 +32,36 @@ let opponentFirstDice;
 let opponentSecondDice;
 
 
-//show results
+//show results pop up
 const showResultPopup = document.getElementById("show-result");
 const close = document.getElementById("btn-close");
 const popupHeader = document.getElementById("result-header");
 const popupYouScore = document.getElementById("you-final-score");
 const popupOpponentScore = document.getElementById("opponent-final-score");
 
+//Roll class/object
+class Roll{
+    constructor(d1, d2, d3, d4 ){
+        this.d1 = d1;
+        this.d2 = d2;
+        this.d3 = d3;
+        this.d4 = d4;
+    }
+    calculateScore(firstDice, secondDice){
+        if(firstDice == 1 || secondDice == 1){
+            score = 0;
+        }else if( firstDice === secondDice){
+            score = (firstDice+secondDice)*2;
+        }else{
+            score = firstDice + secondDice;
+        }
+       return score;
+        
+    }
+
+}
+
+//Roll Dice button listener
 roll.addEventListener("click", function(){
 
     countRolls++; //track # of rolls
@@ -46,11 +72,13 @@ roll.addEventListener("click", function(){
     opponentFirstDice = randomNumber();
     opponentSecondDice = randomNumber();
 
+    const oneRoll = new Roll(youFirstDice, youSecondDice, opponentFirstDice, opponentSecondDice);
+
      //calculate scores
-     yourCurrentScore = calculateScore(youFirstDice, youSecondDice);
+     yourCurrentScore = oneRoll.calculateScore(youFirstDice, youSecondDice);
      yourTotalScore = yourTotalScore + yourCurrentScore;
  
-     opponentCurrentScore = calculateScore(opponentFirstDice, opponentSecondDice);
+     opponentCurrentScore = oneRoll.calculateScore(opponentFirstDice, opponentSecondDice);
      opponentTotalScore = opponentTotalScore + opponentCurrentScore;
  
     render();
@@ -59,14 +87,17 @@ roll.addEventListener("click", function(){
     //game over, pop up show results
     if(countRolls == 3){
         showResult(yourTotalScore, opponentTotalScore);
-        newGame();
+        //newGame();
     }
 
 
 });
 
+
+
+//show pictures and scores
 function render(){
-    //show dice pics
+
     youDice1.src = `images/dice${youFirstDice}.png`;
     youDice2.src = `images/dice${youSecondDice}.png`;
 
@@ -74,10 +105,11 @@ function render(){
     opponentDice2.src = `images/dice${opponentSecondDice}.png`;
 
    
-    youScoreField.innerHTML = `Your Current Score: ${yourCurrentScore} Total Score: ${yourTotalScore}`;
-    opponentScoreField.innerHTML = `Opponent Current Score: ${opponentCurrentScore} Total Score: ${opponentTotalScore}`;
+    youScoreField.innerHTML = `Your Score This Round: ${yourCurrentScore}   Total Score: ${yourTotalScore}`;
+    opponentScoreField.innerHTML = `Opponent Score This Round: ${opponentCurrentScore}   Total Score: ${opponentTotalScore}`;
 }
 
+//start over the game
 function newGame(){
     score = 0;
     yourCurrentScore = 0;
@@ -97,26 +129,18 @@ function newGame(){
     
 }
 
+//generate a random number between 1 to 6
 function randomNumber(){
     return Math.floor(Math.random()*6)+1;
 }
 
-function calculateScore(firstDice, secondDice){
-    if(firstDice == 1 || secondDice == 1){
-        score = 0;
-    }else if( firstDice === secondDice){
-        score = (firstDice+secondDice)*2;
-    }else{
-        score = firstDice + secondDice;
-    }
-   return score;
-    
-}
+
 
 newGameButton.addEventListener("click", function(){
     newGame();
 });
 
+//show result pop up
 function showResult(yourScore, opponentScore){
     showResultPopup.style.opacity = 1;
 
@@ -135,10 +159,13 @@ function showResult(yourScore, opponentScore){
     
 }
 
+//close the popout and start over the game
 close.addEventListener("click", function(){
     showResultPopup.style.opacity = '0';
+    newGame();
 });
 
+//pop up border animation
 function flashBorderAnimation(){
     setTimeout(function(){
         setInterval(function(){
@@ -153,3 +180,17 @@ function flashBorderAnimation(){
 }
 
 
+// Slide
+$btnHide.hide();
+$("#instructions").hide();
+$btnShow.click(function(){
+    $("#instructions").slideDown();
+   $btnShow.hide();
+   $btnHide.show();
+});
+
+$btnHide.click(function(){
+    $("#instructions").slideUp();
+    $btnHide.hide();
+    $btnShow.show();
+});

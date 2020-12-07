@@ -45,13 +45,22 @@
     </div>
 </br>
     <div id = "buttons-container">
-        <button id="rolldice"> Roll Dice</button>
+         <button id="rolldice"> Roll Dice</button>
          <button id="newgame">New Game</button>
     </div>
 </br>
-     <p id="youscore">Your Score:               Your Total Score:</p>
-     <p id="opponentscore">Opponent's Score:     Opponent Total Score</p>
-    
+    <div id = "scoreboard-container">
+        <table>
+            <tr>
+                <td> <p id="youscore">     Your Score This Round: 0      Total Score: 0</p></td>
+            </tr>
+            <tr>
+                <td> <p id="opponentscore">Opponent's Score This Round: 0     Total Score: 0</p></td>
+            </tr>
+        </table>
+       
+       
+    </div>
 
      <section id="show-result">
         <h2 id = "result-header"></h2>
@@ -61,9 +70,42 @@
         <p id="opponent-final-score">Opponent Final Score:</p>
         
     </section>
+</br>
+</br>
+    <div id = "instructions-container">
+        <h2>How to Play</h2>
+        <button id = "btn-show-instructions">[Show]</button>
+        <button id = "btn-hide-instructions">[Hide]</button>
+            
+        <div id ="instructions">
+        <ol>
+            <li>To start, click the "Roll Dice" button</li>
+            <li>To advance to the next round, click "Roll Dice" again</li>
+            <li>After 3 rolls, final score is calculated. Whoever has the highest score wins.</li>
+            <li>Click "New Game" button to start a new game</li>
+                
+        </ol>
+        <h3>Scoring: </h3>
+        <ul>
+            <li>If any of the players two dice comes up as a 1 then the score for that round for the player is 0.</li>
+            <li>If the player rolls a pair of the same numbers then the players score is the total of the two dice times 2</li>
+            <li>If the player rolls any other combination of dice other than the ones mentioned above then the players score is the total value of the two dice</li>
+        </ul>
+    </br>
 
+           
+        
+        </div>
+    </div>
+</br>
+</br>
  </div>
+</br>
+</br>
 
+
+
+ <script src="scripts/jquery-3.4.1.min.js"></script>
  <script src="scripts/dice.js"></script>
 </body>
 </html>

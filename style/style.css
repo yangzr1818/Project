@@ -1,3 +1,7 @@
+* {
+  font-family: Verdana;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -17,6 +21,7 @@ header {
   margin-left: auto;
   margin-right: auto;
   background-color: white;
+  height: auto;
 }
 
 header h1 {
@@ -84,12 +89,11 @@ table, th, td {
   color: black;
   border: solid 1px black;
   cursor: pointer;
-  /* ensure pointer events will apply to the button */
   pointer-events: all;
 }
 
 #buttons-container {
-  max-width: 300px;
+  max-width: 250px;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: auto;
@@ -97,5 +101,53 @@ table, th, td {
 }
 
 #buttons-container button {
+  font-size: large;
   color: #970606;
+  font-weight: bold;
+  border: 3px solid #575757;
+  border-radius: 3px;
+}
+
+#scoreboard-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#scoreboard-container p {
+  font-weight: bold;
+}
+
+#instructions-container {
+  font-weight: bold;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #837e7e;
+}
+
+#instructions-container h2 {
+  color: black;
+  padding-left: 10px;
+  display: inline;
+}
+
+#instructions-container h3 {
+  color: black;
+  padding-left: 10px;
+}
+
+#instructions li {
+  color: #970606;
+}
+
+#instructions-container button {
+  float: right;
+  font-size: small;
+  background: none;
+  border: none;
+  margin: 0;
+  padding-top: 5px;
+  cursor: pointer;
+  color: #b40505;
+  text-decoration: underline;
+  font-weight: bold;
 }
