@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Final Project Dice Game</title>
+    <link href = "style/style.css" rel="stylesheet"/>
+    
+</head>
+
+<header>
+    <div class="wrapper">
+        <h1>Dice Game</h1>
+    </div>
+</header>
+
+<body>
+<div class="wrapper">
+
+    <div class="banner">
+        <img src="images/Dice banner 2.jpg" alt="dice banner">
+     </div>
+
+     <div id="table">
+     <table>
+         <tr>
+             <th>You</th>
+             
+             <th>Opponent</th>
+         </tr>
+
+         <tr class="dice">
+            <td><img src="images/dice1.png" id="dice-you-1" alt="you1"></td>
+           
+            <td><img src="images/dice6.png" id="dice-opponent-1" alt="Opponent"></td>
+        </tr>
+        <tr class="dice">
+            <td><img src="images/dice1.png" id="dice-you-2" alt="you2"></td>
+           
+            <td><img src="images/dice6.png" id ="dice-opponent-2" alt="dice-opponent-2"></td>
+        </tr>
+
+     </table>
+    </div>
+</br>
+    <div id = "buttons-container">
+        <button id="rolldice"> Roll Dice</button>
+         <button id="newgame">New Game</button>
+    </div>
+</br>
+     <p id="youscore">Your Score:               Your Total Score:</p>
+     <p id="opponentscore">Opponent's Score:     Opponent Total Score</p>
+    
+
+     <section id="show-result">
+        <h2 id = "result-header"></h2>
+        <button id="btn-close">&#10005;</button>
+        <p></p>
+        <p id="you-final-score">Your Final Score:</p>
+        <p id="opponent-final-score">Opponent Final Score:</p>
+        
+    </section>
+
+ </div>
+
+ <script src="scripts/dice.js"></script>
+</body>
+</html>
+
